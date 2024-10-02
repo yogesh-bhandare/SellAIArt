@@ -1,2 +1,11 @@
 Django
 gunicorn
+python-decouple
+psycopg[binary]
+dj-database-url
+django-allauth[socialaccount]
+django-allauth-ui
+django-widget-tweaks
+slippers
+Pillow
+stripe
