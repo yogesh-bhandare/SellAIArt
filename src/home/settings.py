@@ -64,6 +64,11 @@ if DEBUG:
         "localhost"
     ]
 
+CSRF_TRUSTED_ORIGINS = [
+    'https://sellaiart-production.up.railway.app',
+]
+
+
 
 # Application definition
 
@@ -76,7 +81,6 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
 
     # my-apps
-    'visits',
     'products',
     'purchases',
 
@@ -85,7 +89,7 @@ INSTALLED_APPS = [
     'allauth',
     'allauth.account',
     'allauth.socialaccount',
-    'allauth.socialaccount.providers.github',
+    # 'allauth.socialaccount.providers.github',
     'allauth.socialaccount.providers.google',
     "widget_tweaks",
     "slippers",
@@ -182,9 +186,9 @@ AUTHENTICATION_BACKENDS = [
 ]
 
 SOCIALACCOUNT_PROVIDERS = {
-    'github': {
-        "VERIFIED_EMAIL":True
-    },
+    # 'github': {
+    #     "VERIFIED_EMAIL":True
+    # },
     'google': {
         'FETCH_USERINFO' : True,
         "VERIFIED_EMAIL":True
