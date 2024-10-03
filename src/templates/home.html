@@ -1,7 +1,54 @@
 {% extends "base.html" %}
 
 {% block content %}
-<div>
-    <h1 class="font-bold text-2xl text-center text-blue-700">Dont judge on UI its under development you can use Authentication, Products and Payments Seamlessly for now.</h1>
+<div class="bg-gray-100">
+
+    <div class="min-h-screen flex flex-col justify-center items-center py-12">
+      
+      <!-- Header Section -->
+      <div class="bg-white shadow-md rounded-lg p-8 text-center max-w-2xl w-full">
+        <h1 class="text-3xl font-bold text-gray-800 mb-4">Welcome to SellAiArt</h1>
+        <p class="text-gray-600 mb-6">Explore our features:</p>
+  
+        <!-- Features Section -->
+        <ul class="text-left space-y-4">
+          <li class="flex items-center">
+            <svg class="w-6 h-6 text-green-500 mr-3" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+              <path fill-rule="evenodd" d="M12 2a10 10 0 100 20 10 10 0 000-20zm1 10a1 1 0 10-2 0v5a1 1 0 102 0v-5zm-1-4a1.25 1.25 0 100 2.5 1.25 1.25 0 000-2.5z" clip-rule="evenodd" />
+            </svg>
+            <span class="text-gray-800 font-medium">Login and Signup</span>
+          </li>
+  
+          <li class="flex items-center">
+            <svg class="w-6 h-6 text-blue-500 mr-3" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+              <path fill-rule="evenodd" d="M12 2a10 10 0 100 20 10 10 0 000-20zm1 10a1 1 0 10-2 0v5a1 1 0 102 0v-5zm-1-4a1.25 1.25 0 100 2.5 1.25 1.25 0 000-2.5z" clip-rule="evenodd" />
+            </svg>
+            <span class="text-gray-800 font-medium">View Product Details</span>
+          </li>
+  
+          <li class="flex items-center">
+            <svg class="w-6 h-6 text-yellow-500 mr-3" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+              <path fill-rule="evenodd" d="M12 2a10 10 0 100 20 10 10 0 000-20zm1 10a1 1 0 10-2 0v5a1 1 0 102 0v-5zm-1-4a1.25 1.25 0 100 2.5 1.25 1.25 0 000-2.5z" clip-rule="evenodd" />
+            </svg>
+            <span class="text-gray-800 font-medium">Add and Manage Products</span>
+          </li>
+  
+          <li class="flex items-center">
+            <svg class="w-6 h-6 text-purple-500 mr-3" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+              <path fill-rule="evenodd" d="M12 2a10 10 0 100 20 10 10 0 000-20zm1 10a1 1 0 10-2 0v5a1 1 0 102 0v-5zm-1-4a1.25 1.25 0 100 2.5 1.25 1.25 0 000-2.5z" clip-rule="evenodd" />
+            </svg>
+            <span class="text-gray-800 font-medium">Checkout Using Stripe</span>
+          </li>
+        </ul>
+  
+        <!-- Warning Section -->
+        <div class="mt-8 bg-red-100 border-l-4 border-red-500 text-red-700 p-4" role="alert">
+          <p class="font-bold">Note:</p>
+          <p>Image downloads are currently unavailable as the AWS S3 bucket setup is not yet complete.</p>
+        </div>
+  
+      </div>
+    </div>
+  
 </div>
 {% endblock content %}
