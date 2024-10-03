@@ -1,7 +1,7 @@
 {% if product %}
 <form method="POST" action="{% url 'purchases:start' %}"> {% csrf_token %}
     <input type="hidden" value="{{ product.handle }}" name="handle" />
-    <div class="flex items-baseline text-gray-900 dark:text-white">
+    <div class="flex items-baseline text-gray-900">
         <span class="text-3xl font-semibold">$</span>
         <span class="text-5xl font-extrabold tracking-tight">{{ product.display_price }}</span>
         

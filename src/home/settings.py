@@ -64,6 +64,10 @@ if DEBUG:
         "localhost"
     ]
 
+CSRF_TRUSTED_ORIGINS = [
+    'https://sellaiart-production.up.railway.app',
+]
+
 
 
 # Application definition

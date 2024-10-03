@@ -2,11 +2,16 @@
 <html lang="en">
 <head>
     {% include "base/meta.html" %}
+    <title>
     {% block title %}
-    <title>SellAIArt</title>
+        SellAIArt
     {% endblock title %}
-    {% include "base/css.html" %}
+    </title>
+    {% block style %}
+        {% include "base/css.html" %}
+    {% endblock style %}
 </head>
+{% block main %}
 <body>
     {% include "nav/navbar.html" %}
     {% include "base/messages.html" with messages=messages %}
@@ -17,4 +22,5 @@
 
     {% include "base/js.html" %}
 </body>
+{% endblock main %}
 </html>

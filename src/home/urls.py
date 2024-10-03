@@ -16,15 +16,12 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
-from visits.views import PageVisitView
-from auth import views as auth_view
 from django.conf import settings
+from . import views
 from django.conf.urls.static import static
 
 urlpatterns = [
-    path('', PageVisitView, name="home"),
-    path('login/', auth_view.login_view),
-    path('register/', auth_view.register_view),
+    path('', views.home_view, name="home"),
     path('products/', include('products.urls')),
     path('purchases/', include('purchases.urls')),
     path('accounts/', include('allauth.urls')),
