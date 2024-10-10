@@ -65,7 +65,7 @@ if DEBUG:
     ]
 
 CSRF_TRUSTED_ORIGINS = [
-    'https://sellaiart-production.up.railway.app',
+    'https://sellaiart.up.railway.app',
 ]
 
 
@@ -89,6 +89,7 @@ INSTALLED_APPS = [
     'allauth',
     'allauth.account',
     'allauth.socialaccount',
+
     # 'allauth.socialaccount.providers.github',
     'allauth.socialaccount.providers.google',
     "widget_tweaks",
@@ -170,7 +171,7 @@ AUTH_PASSWORD_VALIDATORS = [
 
 
 # Django all auth config 
-ALLAUTH_UI_THEME = "lofi"
+ALLAUTH_UI_THEME = "business"
 LOGIN_REDIRECT_URL="/"
 ACCOUNT_AUTHENTICATION_METHOD="username_email"
 ACCOUNT_EMAIL_VERIFICATION="mandatory"
@@ -217,7 +218,7 @@ STATIC_ROOT = BASE_DIR.parent / "local-cdn" / "static"
 MEDIA_URL = 'media/'
 MEDIA_ROOT = BASE_DIR.parent / "local-cdn" / "media"
 PROTECTED_MEDIA_ROOT = BASE_DIR.parent / "local-cdn" / "protected"
-
+from home.storages.conf import * #noqa
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.1/ref/settings/#default-auto-field
 
