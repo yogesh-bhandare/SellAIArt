@@ -12,7 +12,7 @@
             <p class="mb-4 font-light text-gray-400 first-line:uppercase first-line:tracking-widest first-letter:text-7xl first-letter:font-bold first-letter:text-gray-900 dark:first-letter:text-gray-100 first-letter:mr-4 first-letter:float-left">
                 {{object.description}}
             </p>
-
+            
             {% include 'products/attachments-table.html' with attachments=attachments is_owner=is_owner is_manager=is_manager %}
         </div>
 
@@ -25,7 +25,7 @@
             {% if is_owner %}
                 <p class="text-lg font-semibold text-gray-200">You own this product.</p>
             {% else %}
-                <div>
+                <div class="flex justify-center">
                     {% include 'purchases/buy-btn-form.html' with product=object %}
                 </div>
             {% endif %}

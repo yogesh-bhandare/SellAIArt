@@ -3,7 +3,9 @@
     <div class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
         <div class="flex items-center space-x-4">
             <a href="{% url 'home' %}">
-                <img src="{% static 'assets/logo.png' %}" alt="SellAiArt" class="h-10 rounded-sm">
+                {% comment %} <img src="{% static 'assets/logo.png' %}" alt="SellAiArt" class="h-10 rounded-sm"> {% endcomment %}
+                {% comment %} <img src="https://drive.google.com/file/d/1u5ELAnL_NXbrYBnYRoICOauW9AVLXU-e/view?usp=sharing" alt="SellAiArt" class="h-10 rounded-sm"> {% endcomment %}
+                <h1 class="font-bold text-3xl text-yellow-400">SELLAIART</h1>
             </a>
         </div>
         <button data-collapse-toggle="navbar-default" type="button" class="inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-white rounded-lg md:hidden hover:bg-gray-800 focus:outline-none focus:ring-2 focus:ring-gray-700" aria-controls="navbar-default" aria-expanded="false">

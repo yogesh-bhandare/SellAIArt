@@ -3,7 +3,7 @@
     {% csrf_token %}
     <input type="hidden" value="{{ product.handle }}" name="handle" />
 
-    <div class="flex flex-col items-start space-y-4">
+    <div class="flex flex-col justify-center items-center space-y-4">
         <!-- Price Section -->
         <div class="flex items-baseline text-gray-200">
             <span class="text-3xl font-semibold">$</span>
@@ -11,11 +11,14 @@
         </div>
 
         <!-- Conditional login/purchase button -->
-        {% if not request.user.is_authenticated %}
-        <a href="/login" class="focus:outline-none text-gray-800 bg-yellow-400 hover:bg-yellow-500 focus:ring-4 focus:ring-yellow-400 font-medium text-sm px-6 py-3 shadow">Login now to purchase</a>
-        {% else %}
-        <button type="submit" class="focus:outline-none text-gray-800 bg-yellow-400 hover:bg-yellow-500 focus:ring-4 focus:ring-yellow-400 font-medium text-sm px-6 py-3 shadow">Buy Now</button>
-        {% endif %}
+        <div>
+
+            {% if not request.user.is_authenticated %}
+            <a href="/login" class="focus:outline-none text-gray-800 bg-yellow-400 hover:bg-yellow-500 focus:ring-4 focus:ring-yellow-400 font-medium text-sm px-6 py-3 shadow">Login now to purchase</a>
+            {% else %}
+            <button type="submit" class="focus:outline-none text-gray-800 bg-yellow-400 hover:bg-yellow-500 focus:ring-4 focus:ring-yellow-400 font-medium text-sm px-6 py-3 shadow">Buy Now</button>
+            {% endif %}
+        </div>
     </div>
 </form>
 {% endif %}
