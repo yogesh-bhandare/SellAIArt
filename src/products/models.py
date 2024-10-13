@@ -5,6 +5,7 @@ from django.db import models
 from django.conf import settings
 from django.utils import timezone
 from django.urls import reverse
+from home.storages.backends import ProtectedFileStorage
 from django.core.files.storage import FileSystemStorage
 
 STRIPE_SECRET_KEY = config("STRIPE_SECRET_KEY", default=None)
@@ -12,6 +13,7 @@ stripe.api_key = STRIPE_SECRET_KEY
 
 PROTECTED_MEDIA_ROOT = settings.PROTECTED_MEDIA_ROOT
 protected_storage = FileSystemStorage(location=str(PROTECTED_MEDIA_ROOT))
+# protected_storage = ProtectedFileStorage()
 
 # Create your models here.
 class Product(models.Model):
@@ -22,6 +24,10 @@ class Product(models.Model):
     image = models.ImageField(upload_to="products/", blank=True, null=True)
     name = models.CharField(max_length=120)
     handle = models.SlugField(unique=True)  # slug
+    description = models.TextField(null=True, blank=True)
+    prompt = models.TextField(null=True, blank=True)
+    category = models.CharField( max_length=50, null=True, blank=True)
+    tags = models.CharField( max_length=50, null=True, blank=True)
     price = models.DecimalField(max_digits=10, decimal_places=2, default=9.99)
     og_price = models.DecimalField(max_digits=10, decimal_places=2, default=9.99)
     stripe_price_id = models.CharField(max_length=220, blank=True, null=True)

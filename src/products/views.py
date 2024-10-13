@@ -1,4 +1,5 @@
 import mimetypes
+from django.urls import reverse
 from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth.decorators import login_required
 from django.http import FileResponse, HttpResponseBadRequest
@@ -33,6 +34,11 @@ def product_manage_detail_view(request, handle=None):
     context = {"object": obj}
     if not is_manager:
         return HttpResponseBadRequest()
+    
+    if request.method == "POST" and "delete-product" in request.POST:
+        obj.delete()
+        return redirect(reverse('products:list'))
+    
     form = ProductUpdateFrom(request.POST or None, request.FILES or None, instance=obj)
     formset = ProductAttachmentInlineFormSet(request.POST or None, request.FILES or None,queryset=attachments)
     if form.is_valid() and formset.is_valid():
@@ -63,9 +69,11 @@ def product_detail_view(request, handle=None):
     obj = get_object_or_404(Product, handle=handle)
     attachments = ProductAttachment.objects.filter(product=obj)
     is_owner = False
+    is_manager = False
     if request.user.is_authenticated:
         is_owner = request.user.purchase_set.all().filter(product=obj, completed=True).exists()
-    context = {"object":obj,"is_owner": is_owner, "attachments": attachments}
+        is_manager = obj.user == request.user
+    context = {"object":obj,"is_owner": is_owner,"is_manager":is_manager, "attachments": attachments}
     return render(request, 'products/detail.html', context)
 
 def product_attachment_download_view(request, handle=None, pk=None):

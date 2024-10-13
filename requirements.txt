@@ -9,3 +9,5 @@ django-widget-tweaks
 slippers
 Pillow
 stripe
+boto3
+django-storages

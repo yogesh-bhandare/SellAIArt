@@ -1,5 +1,12 @@
 {% extends "base.html" %}
+{% load static %}
 
 {% block content %}
-<h1 class="text-red-700 font-bold text-3xl bg-yellow-200">Hello Tailwind</h1>
+{% include "sections/hero.html" %}
+
+{% include "sections/explore.html" %}
+
+{% include "sections/about.html" %}
+
+{% include "footer/footer.html" %}
 {% endblock content %}

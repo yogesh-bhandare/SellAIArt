@@ -1,61 +1,55 @@
 {% extends "base.html" %}
 
-
 {% block content %}
 
-<div class="flex flex-col md:flex-row">
+<div class="container mx-auto px-4 py-8">
+    <div class="flex flex-col md:flex-row gap-8">
 
-    <div class="w-full md:w-3/4 space-y-4">
-        <!-- main content-->
-        <h2 class="text-4xl font-bold dark:text-white">{{ object.name }}</h2>
+        <!-- Main content section -->
+        <div class="w-full md:w-3/4 space-y-6">
+            <h2 class="text-4xl font-bold text-white">{{ object.name }}</h2>
 
+            <p class="mb-4 font-light text-gray-400 first-line:uppercase first-line:tracking-widest first-letter:text-7xl first-letter:font-bold first-letter:text-gray-900 dark:first-letter:text-gray-100 first-letter:mr-4 first-letter:float-left">
+                {{object.description}}
+            </p>
 
-
-        <p class="mb-3 font-light text-gray-500 dark:text-gray-400 first-line:uppercase first-line:tracking-widest first-letter:text-7xl first-letter:font-bold first-letter:text-gray-900 dark:first-letter:text-gray-100 first-letter:mr-3 first-letter:float-left">Track work across the enterprise through an open, collaborative platform. Link issues across Jira and ingest data from other software development tools, so your IT support and operations teams have richer contextual information to rapidly respond to requests, incidents, and changes.</p>
-        <p class="font-light text-gray-500 dark:text-gray-400">Deliver great service experiences fast - without the complexity of traditional ITSM solutions.Accelerate critical development work, eliminate toil, and deploy changes with ease, with a complete audit trail for every change.</p>
-
-
-        {% include 'products/attachments-table.html' with attachments=attachments is_owner=is_owner %}
-
-    </div>
-
-
-
-
-    <div class="w-full md:w-1/4 space-y-4">
-        <!-- sidebar -->
-        {% if is_owner %}
-        <p>You own this product.</p>
-        {% else %}
-        <div>
-            {% include 'purchases/buy-btn-form.html' with product=object %}
+            {% include 'products/attachments-table.html' with attachments=attachments is_owner=is_owner is_manager=is_manager %}
         </div>
-        {% endif %}
-        {% if object.image %}
-            <div class="grid gap-4 ">
+
+        <!-- Sidebar section -->
+        <div class="w-full md:w-1/4 space-y-6">
+            {% if is_manager %}
+            <a href="{% url 'products:manage' handle=object.handle %}" class="bg-yellow-400 text-[#212226] py-2 px-4">Manage</a>
+            {% else %}
+
+            {% if is_owner %}
+                <p class="text-lg font-semibold text-gray-200">You own this product.</p>
+            {% else %}
                 <div>
-                    <img class="h-auto max-w-full rounded-lg" src="{{ object.image.url }}" alt="">
+                    {% include 'purchases/buy-btn-form.html' with product=object %}
                 </div>
-            
-            </div>
-        {% endif %}
+            {% endif %}
+            {% endif %}
 
+            {% if object.image %}
+                <div class="rounded-lg overflow-hidden shadow-lg">
+                    <img class="w-full h-64 object-contain" src="{{ object.image.url }}" alt="{{ object.name }}">
+                </div>
+            {% endif %}
 
-
-        {% if form %}
-        <div>
-            <h3>Update Product</h3>
-            <form method="POST" action="." enctype="multipart/form-data">
-                {% csrf_token %}
-                {{ form.as_p }}
-
-                <button type="submit" class="btn-submit mt-2">Submit</button>
-            </form>
+            {% if form %}
+                <div class="mt-6">
+                    <h3 class="text-lg font-bold text-white">Update Product</h3>
+                    <form method="POST" action="." enctype="multipart/form-data">
+                        {% csrf_token %}
+                        {{ form.as_p }}
+                        <button type="submit" class="btn-submit mt-4 bg-blue-600 hover:bg-blue-700 text-white font-semibold py-2 px-4 rounded-lg">Submit</button>
+                    </form>
+                </div>
+            {% endif %}
         </div>
-        {% endif %}
 
     </div>
-
 </div>
 
 {% endblock %}

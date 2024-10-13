@@ -14,10 +14,8 @@
         {% block extra_head %}
         <link rel="stylesheet" href="{% static 'allauth_ui/output.css' %}">
         {% endblock extra_head %}
-        {% include "base/css.html" %}
     </head>
     <body class="min-h-screen bg-base-300">
-        {% include "nav/navbar.html" %}
         {% block body %}
             {% include "base/messages.html" with messages=messages %}
             {% block content %}

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="scroll-smooth">
 <head>
     {% include "base/meta.html" %}
     <title>
@@ -7,12 +7,10 @@
         SellAIArt
     {% endblock title %}
     </title>
-    {% block style %}
-        {% include "base/css.html" %}
-    {% endblock style %}
+    {% include "head/css.html" %}
 </head>
 {% block main %}
-<body>
+<body class="bg-gray-900 text-white">
     {% include "nav/navbar.html" %}
     {% include "base/messages.html" with messages=messages %}
 

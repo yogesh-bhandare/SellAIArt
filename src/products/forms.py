@@ -2,12 +2,16 @@ from django import forms
 from django.forms import modelformset_factory, inlineformset_factory
 from .models import Product, ProductAttachment
 
-input_css_class = "form-control"
+input_css_class = "w-full text-gray-900 p-2 m-2"
 
 class ProductFrom(forms.ModelForm):
     class Meta:
         model= Product
-        fields= ['image', 'name','handle','price']
+        fields= ['image', 'name','handle','price', 'description', 'prompt', 'category', 'tags']
+        widgets = {
+            'description': forms.Textarea(attrs={'rows': 3, 'cols': 60}),
+            'prompt': forms.Textarea(attrs={'rows': 1, 'cols': 60}),
+        }
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
@@ -18,7 +22,11 @@ class ProductFrom(forms.ModelForm):
 class ProductUpdateFrom(forms.ModelForm):
     class Meta:
         model= Product
-        fields= ['image','name','handle','price']
+        fields= ['image', 'name','handle','price', 'description', 'prompt', 'category', 'tags']
+        widgets = {
+            'description': forms.Textarea(attrs={'rows': 3, 'cols': 60}),
+            'prompt': forms.Textarea(attrs={'rows': 1, 'cols': 60}),
+        }
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)

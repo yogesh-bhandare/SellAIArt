@@ -26,7 +26,7 @@
                 </td>
                
                 <td class="px-6 py-4">
-                    {% if is_owner or attachment.is_free %}<a href="{{ attachment.get_download_url }}" class="font-medium text-blue-600 dark:text-blue-500 hover:underline">Download</a>{% else %}Purchase to download{% endif %}
+                    {% if is_owner or attachment.is_free or is_manager %}<a href="{{ attachment.get_download_url }}" class="font-medium text-blue-600 dark:text-blue-500 hover:underline">Download</a>{% else %}Purchase to download{% endif %}
                 </td>
             </tr>
             {% endfor %}
