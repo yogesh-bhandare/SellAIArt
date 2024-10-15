@@ -3,13 +3,19 @@
 {% load allauth_ui %}
 {% block content %}
     {% trans "Sign Out" as heading %}
-    {% trans "Are you sure you want to sign out?" as subheading %}
-    {% url 'account_logout' as action_url %}
-    {% #container heading=heading subheading=subheading %}
-    {% trans "Continue" as button_text %}
-    {% #form url=action_url button_text=heading %}
-    {% csrf_token %}
-    {{ redirect_field }}
-    {% /form %}
-    {% /container %}
+    <div class="min-h-screen flex items-center justify-center bg-gray-900">
+        <div class="bg-gray-800 shadow-md rounded-lg p-8 max-w-sm w-full text-center">
+            <h1 class="text-2xl font-bold text-white mb-6">{{ heading }}</h1>
+            <p class="text-white text-lg mb-6">{{ subheading }}</p>
+            <form method="POST" action="{{ action_url }}">
+                {% csrf_token %}
+                <button class="w-full bg-yellow-400 text-white py-2 rounded-lg hover:bg-yellow-600 transition-colors">
+                    {{ button_text }}
+                </button>
+            </form>
+            <a class="link text-sm text-white hover:underline mt-4 inline-block" href="{% url 'account_profile' %}">
+                Cancel
+            </a>
+        </div>
+    </div>
 {% endblock content %}
