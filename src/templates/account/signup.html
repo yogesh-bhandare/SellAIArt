@@ -1,20 +1,43 @@
-{% extends "account/signup.html" %}
+{% extends "account/login.html" %}
 {% load i18n %}
 {% load allauth_ui %}
 {% load widget_tweaks %}
 {% block content %}
-    {% trans "Sign Up" as heading %}
-    {% blocktranslate asvar subheading %}Already have an account? Then please <a href="{{ login_url }}" class="link">sign in</a>.{% endblocktranslate %}
-    {% #container heading=heading subheading=subheading  %}
-    {% if not SOCIALACCOUNT_ONLY %}
-        {% url 'account_signup' as action_url %}
-        {% #form form=form url=action_url button_text=heading %}
-        {{ redirect_field }}
-        {% csrf_token %}
-        {% /form %}
-    {% endif %}
-    {% if SOCIALACCOUNT_ENABLED %}
-        {% include "socialaccount/snippets/login.html" with page_layout="entrance" %}
-    {% endif %}
-    {% /container %}
-{% endblock %}
+{% trans "Sign Up" as heading %}
+<div class="min-h-screen flex items-center justify-center bg-gray-900">
+    <div class="bg-gray-800 shadow-md rounded-lg p-8 max-w-sm w-full">
+        <h1 class="text-2xl font-bold text-center mb-6">{{ heading }}</h1>
+        <form method="POST" action="{{ action_url }}">
+            {% csrf_token %}
+            <div class="my-4">
+                <label class="block text-white font-semibold mb-2" for="email">Email</label>
+                {% render_field form.email class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-yellow-400" %}
+            </div>
+            <div class="my-4">
+                <label class="block text-white font-semibold mb-2" for="username">Username</label>
+                {% render_field form.username class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-yellow-400" %}
+            </div>
+            <div class="my-4">
+                <label class="block text-white font-semibold mb-2" for="password1">Password</label>
+                {% render_field form.password1 class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-yellow-400" %}
+            </div>
+            <div class="my-4">
+                <label class="block text-white font-semibold mb-2" for="password2">Confirm Password</label>
+                {% render_field form.password2 class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-yellow-400" %}
+            </div>
+            <div class="mt-6">
+                <button class="w-full bg-yellow-400 text-white py-2 rounded-lg hover:bg-yellow-600 transition-colors">
+                    {{ heading }}
+                </button>
+            </div>
+            <div class="flex justify-between items-center mt-4">
+                <a class="link text-sm text-white hover:underline" href="{{ login_url }}">Already have an account? Sign In</a>
+            </div>
+        </form>
+        {% if SOCIALACCOUNT_ENABLED %}
+            {% include "socialaccount/snippets/login.html" with page_layout="entrance" %}
+        {% endif %}
+    </div>
+</div>
+
+{% endblock content %}
