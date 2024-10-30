@@ -4,7 +4,7 @@ from decouple import config
 AWS_ACCESS_KEY_ID = config("AWS_ACCESS_KEY_ID", default=None)
 AWS_SECRET_ACCESS_KEY = config("AWS_SECRET_ACCESS_KEY", default=None)
 AWS_S3_SIGNATURE_VERSION = "s3v4"
-AWS_STORAGE_BUCKET_NAME = config("AWS_STORAGE_BUCKET_NAME", default="sellaiart")
+AWS_STORAGE_BUCKET_NAME = config("AWS_STORAGE_BUCKET_NAME", default="sellaiart-prod")
 AWS_S3_REGION_NAME = config("AWS_S3_REGION_NAME", default=None)
 AWS_S3_ENDPOINT_URL = f"https://{AWS_STORAGE_BUCKET_NAME}.s3.{AWS_S3_REGION_NAME}.amazonaws.com"
 
