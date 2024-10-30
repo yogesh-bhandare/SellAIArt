@@ -12,8 +12,8 @@ STRIPE_SECRET_KEY = config("STRIPE_SECRET_KEY", default=None)
 stripe.api_key = STRIPE_SECRET_KEY
 
 PROTECTED_MEDIA_ROOT = settings.PROTECTED_MEDIA_ROOT
-protected_storage = FileSystemStorage(location=str(PROTECTED_MEDIA_ROOT))
-# protected_storage = ProtectedFileStorage()
+# protected_storage = FileSystemStorage(location=str(PROTECTED_MEDIA_ROOT))
+protected_storage = ProtectedFileStorage()
 
 # Create your models here.
 class Product(models.Model):
