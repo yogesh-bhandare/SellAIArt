@@ -9,13 +9,13 @@
             <p class="text-white text-lg mb-6">{{ subheading }}</p>
             <form method="POST" action="{{ action_url }}">
                 {% csrf_token %}
-                <button class="w-full bg-yellow-400 text-white py-2 rounded-lg hover:bg-yellow-600 transition-colors">
-                    {{ button_text }}
+                <button class="w-full bg-yellow-400 text-gray-900 py-2 rounded-lg hover:bg-yellow-600 transition-colors">
+                    Logout
                 </button>
             </form>
-            <a class="link text-sm text-white hover:underline mt-4 inline-block" href="{% url 'account_profile' %}">
+            {% comment %} <a class="link text-sm text-white hover:underline mt-4 inline-block" href="{% url 'account_profile' %}">
                 Cancel
-            </a>
+            </a> {% endcomment %}
         </div>
     </div>
 {% endblock content %}
