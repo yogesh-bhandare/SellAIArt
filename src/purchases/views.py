@@ -24,7 +24,7 @@ def purchase_start_view(request):
     request.session['purchase_id'] = purchase.id
     success_path = reverse("purchases:success")
     if not success_path.startswith("/"):
-        success_path = f"/{success_path}"
+        success_path = f"{success_path}"
     cancel_path = reverse("purchases:stopped")
     success_url = f"{BASE_ENDPOINT}{success_path}"
     cancel_url = f"{BASE_ENDPOINT}{cancel_path}"
