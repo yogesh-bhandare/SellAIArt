@@ -20,8 +20,7 @@
     <body class="">
         {% block body %}
         <div class="flex">
-            <!-- Left side: Login form -->
-            <div class="w-1/2 bg-gray-900 text-white p-8 shadow-lg">
+            <div class="w-full sm:w-1/2 bg-gray-900 text-white p-8 shadow-lg">
                 {% include "base/messages.html" with messages=messages %}
                 {% block content %}
                 <!-- The login form goes here -->
@@ -60,12 +59,11 @@
                     {% endif %}
                 </div>
             </div>
+            
 
-            <!-- Right side: Image -->
-            <div class="w-1/2 h-full">
-                <!-- Use an <img> tag with object-cover and object-center to crop and center the image -->
+            <div class="w-1/2 h-full hidden sm:block">
                 <img src="https://img.freepik.com/free-photo/portrait-animal-meditating-practicing-mindfulness-digital-art-style_23-2151506824.jpg?t=st=1728801439~exp=1728805039~hmac=270f0bb698079a7076fab2366810b000336f2060e226f4796a833be2c6ea9ee1&w=740"
-                     alt="AI Art" class="h-full w-full object-cover object-center" />
+                    alt="AI Art" class="h-full w-full object-cover object-center" />
             </div>
         </div>
         {% endblock body %}
