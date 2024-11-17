@@ -37,7 +37,7 @@ Building SellAiArt involved addressing critical challenges:
 ## What I Learned
 The development process highlighted the need for robust security and scalable architecture, enhancing our skills in secure asset delivery, OAuth authentication, and CI/CD processes for consistent quality.
 
-## What's Next for ContentNexus
+## What's Next for SellAiArt
 SellAiArt's roadmap includes:
 - **Enhanced AI Art Tools:** More options for artists to explore different styles.
 - **Advanced Analytics:** Insights on sales and engagement to inform artists.
